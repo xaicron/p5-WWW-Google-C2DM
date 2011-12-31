@@ -13,7 +13,6 @@ use 5.008_001;
 our $VERSION = '0.01';
 
 our $URL = 'https://android.apis.google.com/c2dm/send';
-$ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0; # suppress certificate verify failed
 
 sub new {
     my ($class, %args) = @_;
@@ -37,6 +36,7 @@ sub send {
     $req->header(Authorization  => 'GoogleLogin auth='.$self->{auth_token});
     $req->content(join '&', map { $_.'='.$args{$_} } keys %args);
 
+    local $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0; # suppress certificate verify failed
     my $http_response = $self->{ua}->request($req);
 
     my $result;
