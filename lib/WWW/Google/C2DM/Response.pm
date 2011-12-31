@@ -69,7 +69,7 @@ WWW::Google::C2DM::Response - Response Object
 
 =head1 DESCRIPTION
 
-WWW::Google::C2DM::Response is a WWW::Google::C2DM intarnal class.
+WWW::Google::C2DM::Response is a WWW::Google::C2DM internal class.
 
 =head1 METHODS
 
@@ -120,7 +120,7 @@ C2DM error code. SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/#push 
 
 =item id()
 
-Response id param.
+Response id parameter.
 
   say $res->id;
 
