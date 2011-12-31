@@ -142,9 +142,11 @@ so that only the last message gets sent to the client.
 
   collapse_key => $collapse_key,
 
-=item delay_while_idle : (1|0)
+=item delay_while_idle : Bool
 
 Optional. If included, indicates that the message should not be sent immediately if the device is idle.
+
+  delay_while_idle => 1,
 
 =item data.<key> : Str || data : HASHREF
 
