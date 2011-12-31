@@ -18,6 +18,9 @@ sub new {
     my ($class, %args) = @_;
     croak "Usage: $class->new(auth_token => \$auth_token)" unless $args{auth_token};
     $args{ua} ||= LWP::UserAgent->new(agent => __PACKAGE__.' / '.$VERSION);
+    if ($args{ua}->isa('LWP::UserAgent')) {
+        $args{ua}->ssl_opts(verify_hostname => 0);
+    }
     bless { %args }, $class;
 }
 
@@ -36,7 +39,6 @@ sub send {
     $req->header(Authorization  => 'GoogleLogin auth='.$self->{auth_token});
     $req->content(join '&', map { $_.'='.$args{$_} } keys %args);
 
-    local $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0; # suppress certificate verify failed
     my $http_response = $self->{ua}->request($req);
 
     my $result;
