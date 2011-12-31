@@ -77,15 +77,102 @@ __END__
 
 =head1 NAME
 
-WWW::Google::C2DM -
+WWW::Google::C2DM - Google C2DM Client
 
 =head1 SYNOPSIS
 
   use WWW::Google::C2DM;
+  use WWW::Google::ClientLogin;
+
+  my $auth_token = WWW::Google::ClientLogin->new(...)->authentication->auth_token;
+  my $c2dm = WWW::Google::C2DM->new(auth_token => $auth_token);
+  my $res  = $c2dm->send(
+      registration_id => $registration_id,
+      collapse_key    => $collapse_key,
+      'data.message'  => $message,
+  );
+  die $res->error_code if $res->has_error;
+  my $id = $res->id;
 
 =head1 DESCRIPTION
 
-WWW::Google::C2DM is
+WWW::Google::C2DM is HTTP Client for Google C2DM service.
+
+SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/ >>
+
+=head1 METHODS
+
+=over 4
+
+=item new()
+
+Create a WWW::Google::C2DM instance.
+
+  my $c2dm = WWW::Google::C2DM->new(auth_token => $auth_token);
+
+C<< auth_token >> parameter is required.
+
+=item send()
+
+Send to C2DM. Returned values is L<< WWW::Google::C2DM::Response >> object.
+
+  my $res = $c2dm->send(
+      registration_id  => $registration_id,
+      collapse_key     => $collapse_key,
+      'data.message'   => $message,
+      delay_while_idle => $bool,
+  );
+
+  say $res->error_code if $res->has_error;
+
+send() arguments are:
+
+=over 4
+
+=item registration_id : Str
+
+Required. The registration ID retrieved from the Android application on the phone.
+
+  registration_id => $registration_id,
+
+=item collapse_key : Str
+
+Required. An arbitrary string that is used to collapse a group of like messages when the device is offline,
+so that only the last message gets sent to the client.
+
+  collapse_key => $collapse_key,
+
+=item delay_while_idle : (1|0)
+
+Optional. If included, indicates that the message should not be sent immediately if the device is idle.
+
+=item data.<key> : Str || data : HASHREF
+
+Optional. Payload data, expressed as key-value pairs.
+
+  my $res = $c2dm->send(
+      ....
+      'data.message' => $message,
+      'data.name'    => $name,
+  );
+
+Or you can specify C<< data >>. Value is must be HASHREF.
+
+  data => {
+      message => $message,
+      name    => $name,
+  },
+  # Equals:
+  # 'data.message' => $message,
+  # 'data.name'    => $name,
+
+Or you can specify both option.
+
+=back
+
+SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/#push >>
+
+=back
 
 =head1 AUTHOR
 
