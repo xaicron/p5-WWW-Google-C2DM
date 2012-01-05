@@ -7,6 +7,7 @@ all_from 'lib/WWW/Google/C2DM.pm';
 requires 'HTTP::Request';
 requires 'LWP::UserAgent';
 requires 'LWP::Protocol::https';
+recommends 'WWW::Google::ClientLogin';
 
 test_requires 'Test::More', 0.98;
 test_requires 'Test::Flatten', 0.07;
