@@ -104,17 +104,28 @@ SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/ >>
 
 =head1 METHODS
 
-=over 4
-
-=item new()
+=head2 new(%args)
 
 Create a WWW::Google::C2DM instance.
 
   my $c2dm = WWW::Google::C2DM->new(auth_token => $auth_token);
 
-C<< auth_token >> parameter is required.
+Supported parameters are:
 
-=item send()
+=over 4
+
+=item auth_token : Str
+
+Required. authorization token from Google ClientLogin.
+SEE ALSO L<< WWW::Google::ClientLogin >>.
+
+=item ua : LWP::UserAgent
+
+Optional.
+
+=back
+
+=head2 send(%args)
 
 Send to C2DM. Returned values is L<< WWW::Google::C2DM::Response >> object.
 
@@ -127,7 +138,7 @@ Send to C2DM. Returned values is L<< WWW::Google::C2DM::Response >> object.
 
   say $res->error_code if $res->has_error;
 
-send() arguments are:
+Supported parameters are:
 
 =over 4
 
@@ -175,8 +186,6 @@ Or you can specify both option.
 =back
 
 SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/#push >>
-
-=back
 
 =head1 AUTHOR
 
