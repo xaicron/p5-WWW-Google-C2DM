@@ -5,7 +5,7 @@ use warnings;
 use Carp qw(croak);
 use HTTP::Request;
 use LWP::UserAgent;
-use LWP::protocol::https;
+use LWP::Protocol::https;
 
 use WWW::Google::C2DM::Response;
 
