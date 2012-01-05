@@ -34,6 +34,8 @@ WWW::Google::C2DM
 Str
 ClientLogin
 ua
+HTTP
+offline
 
 # personal section
 xaicron
