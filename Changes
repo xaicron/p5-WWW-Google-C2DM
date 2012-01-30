@@ -1,4 +1,7 @@
 Revision history for Perl extension WWW::Google::C2DM
 
+0.02  Tue Jan 31 00:37:29 2012
+    - fixed $res->code and $res->message (tomi-ru++)
+
 0.01  Thu Jan  5 20:13:07 2012
     - first release

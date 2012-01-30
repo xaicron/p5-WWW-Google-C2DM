@@ -10,7 +10,7 @@ use LWP::Protocol::https;
 use WWW::Google::C2DM::Response;
 
 use 5.008_001;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our $URL = 'https://android.apis.google.com/c2dm/send';
 
