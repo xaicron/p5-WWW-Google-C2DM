@@ -18,11 +18,11 @@ sub has_error {
 }
 
 sub code {
-    $_[0]->http_response->{code};
+    $_[0]->http_response->code;
 }
 
 sub message {
-    $_[0]->http_response->{message};
+    $_[0]->http_response->message;
 }
 
 sub error_code {
@@ -30,8 +30,7 @@ sub error_code {
 }
 
 sub status_line {
-    my $self = shift;
-    sprintf '%d %s', $self->code, $self->message;
+    $_[0]->http_response->status_line;
 }
 
 sub http_response {

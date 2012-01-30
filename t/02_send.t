@@ -80,9 +80,14 @@ subtest 'success' => sub {
     isa_ok $res, 'WWW::Google::C2DM::Response';
     isa_ok $res->http_response, 'HTTP::Response';
     ok $res->is_success;
+    is $res->code, 200;
+    is $res->message, 'OK';
+    is $res->status_line, '200 OK';
+
     ok !$res->has_error;
     is $res->error_code, '';
     is $res->id, 'id';
+    is_deeply $res->params, { id => 'id' };
 };
 
 subtest 'with data' => sub {
