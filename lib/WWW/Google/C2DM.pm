@@ -100,7 +100,7 @@ WWW::Google::C2DM - Google C2DM Client
 
 WWW::Google::C2DM is HTTP Client for Google C2DM service.
 
-SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/ >>
+SEE ALSO L<< http://code.google.com/intl/us/android/c2dm/ >>
 
 =head1 METHODS
 
@@ -185,7 +185,7 @@ Or you can specify both option.
 
 =back
 
-SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/#push >>
+SEE ALSO L<< http://code.google.com/intl/us/android/c2dm/#push >>
 
 =head1 AUTHOR
 
