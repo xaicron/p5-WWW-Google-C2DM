@@ -84,6 +84,7 @@ subtest 'success' => sub {
     is $res->message, 'OK';
     is $res->status_line, '200 OK';
 
+    ok !$res->is_error;
     ok !$res->has_error;
     is $res->error_code, '';
     is $res->id, 'id';
@@ -121,6 +122,7 @@ subtest 'with data' => sub {
     isa_ok $res, 'WWW::Google::C2DM::Response';
     isa_ok $res->http_response, 'HTTP::Response';
     ok $res->is_success;
+    ok !$res->is_error;
     ok !$res->has_error;
     is $res->error_code, '';
     is $res->id, 'id';
@@ -146,6 +148,7 @@ subtest 'error 503' => sub {
     isa_ok $res, 'WWW::Google::C2DM::Response';
     isa_ok $res->http_response, 'HTTP::Response';
     ok !$res->is_success;
+    ok $res->is_error;
     ok $res->has_error;
     is $res->error_code, '';
     is $res->id, undef;
@@ -172,6 +175,7 @@ subtest '200 but error' => sub {
     isa_ok $res, 'WWW::Google::C2DM::Response';
     isa_ok $res->http_response, 'HTTP::Response';
     ok !$res->is_success;
+    ok $res->is_error;
     ok $res->has_error;
     is $res->error_code, 'QuotaExceeded';
     is $res->id, undef;

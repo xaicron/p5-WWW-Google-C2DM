@@ -93,7 +93,7 @@ WWW::Google::C2DM - Google C2DM Client
       collapse_key    => $collapse_key,
       'data.message'  => $message,
   );
-  die $res->error_code if $res->has_error;
+  die $res->error_code if $res->is_error;
   my $id = $res->id;
 
 =head1 DESCRIPTION
@@ -136,7 +136,7 @@ Send to C2DM. Returned values is L<< WWW::Google::C2DM::Response >> object.
       delay_while_idle => $bool,
   );
 
-  say $res->error_code if $res->has_error;
+  say $res->error_code if $res->is_error;
 
 Supported parameters are:
 
