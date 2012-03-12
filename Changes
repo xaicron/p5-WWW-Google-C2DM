@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::Google::C2DM
 
+0.04  Mon Mar 12 17:57:31 2012
+    - fixed problem that broken on older LWP::UserAgent
+
 0.03  Wed Feb 15 01:23:45 2012
     - added is_error method on WWW::Google::C2DM::Response
 
