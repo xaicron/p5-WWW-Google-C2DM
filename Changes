@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::Google::C2DM
 
+0.05  Tue Mar 13 20:51:16 2012
+    - fixed a problem that grabled in multi byte.
+
 0.04  Mon Mar 12 17:57:31 2012
     - fixed problem that broken on older LWP::UserAgent
 
