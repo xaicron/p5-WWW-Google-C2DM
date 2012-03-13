@@ -15,7 +15,7 @@ sub new_c2dnm {
 
 sub parse_request {
     my $content = shift;
-    return { map { uri_unescape($_) } map { split '=', $_, 2 } split '&', $content };
+    return { map { split '=', $_, 2 } split '&', $content };
 }
 
 sub default_request_params {
@@ -101,6 +101,7 @@ subtest 'with data' => sub {
             'data.message' => 'message',
             'data.foo'     => 'bar',
             'data.hoge'    => 'fuga',
+            'data.mbyte'   => "%E5%BF%8D%E8%80%85",
         };
         is $req->header('Content-Type'), 'application/x-www-form-urlencoded';
         is $req->header('Authorization'), 'GoogleLogin auth=auth_token';
@@ -115,8 +116,9 @@ subtest 'with data' => sub {
         collapse_key    => 'collapse_key',
         'data.message'  => 'message',
         data            => {
-            foo  => 'bar',
-            hoge => 'fuga',
+            foo   => 'bar',
+            hoge  => 'fuga',
+            mbyte => "\x{5fcd}\x{8005}",
         },
     );
     isa_ok $res, 'WWW::Google::C2DM::Response';
