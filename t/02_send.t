@@ -6,6 +6,7 @@ use Test::SharedFork;
 use Test::Fake::HTTPD;
 use URI::Escape;
 use WWW::Google::C2DM;
+use WWW::Google::C2DM::Constants;
 
 plan skip_all => 'THIS TEST IS NOT SUPPORTED ON YOUR OS' if $^O eq 'MSWin32';
 
@@ -179,7 +180,7 @@ subtest '200 but error' => sub {
     ok !$res->is_success;
     ok $res->is_error;
     ok $res->has_error;
-    is $res->error_code, 'QuotaExceeded';
+    is $res->error_code, QuotaExceeded;
     is $res->id, undef;
 };
 
