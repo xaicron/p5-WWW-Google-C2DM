@@ -11,7 +11,7 @@ use URI;
 use WWW::Google::C2DM::Response;
 
 use 5.008_001;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 our $URL = 'https://android.apis.google.com/c2dm/send';
 

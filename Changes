@@ -1,5 +1,9 @@
 Revision history for Perl extension WWW::Google::C2DM
 
+0.06  Fri Mar 16 02:25:17 2012
+    - added WWW::Google::C2DM::Constants
+    - fixed doc
+
 0.05  Tue Mar 13 20:51:16 2012
     - fixed a problem that grabled in multi byte.
 
