@@ -37,6 +37,7 @@ sub status_line {
 sub http_response {
     $_[0]->{http_response};
 }
+*res = *http_response;
 
 sub params {
     $_[0]->{params};
@@ -73,68 +74,71 @@ WWW::Google::C2DM::Response is a WWW::Google::C2DM internal class.
 
 =head1 METHODS
 
-=over
+=head2 new(%args)
 
-=item new(%args)
+Creates a new instance.
 
-=item is_success()
+=head2 is_success()
 
   $res->is_success ? 1 : 0;
 
-=item is_error()
+=head2 is_error()
 
   $res->is_error ? 1 : 0;
 
-=item has_error()
+=head2 has_error()
 
-  $res->has_error ? 1 : 0;
+Alias of C<< is_error() >>.
 
-=item code()
+=head2 code()
 
 HTTP Response code.
 
   say $res->code;
 
-=item message()
+=head2 message()
 
 HTTP Response message.
 
   say $res->message;
 
-=item status_line()
+=head2 status_line()
 
-C<< code >> and C<< message >>
+Return value is a string that contains the C<< code() >> and C<< message() >>.
 
   say $res->status_line; # eq say $res->code, ' ', $res->message;
 
-=item http_response()
+=head2 http_response()
 
 Original HTTP Response object.
 
   my $http_response = $res->http_response;
   say $http_response->as_string;
 
-=item error_code()
+=head2 res()
+
+Alias of C<< http_response() >>.
+
+=head2 error_code()
 
 C2DM error code. SEE ALSO L<< http://code.google.com/intl/ja/android/c2dm/#push >>
 
-  if ($res->error_code eq 'QuotaExceeded') {
+  use WWW::Google::C2DM::Constants qw(:error_code);
+  if ($res->error_code eq QuotaExceeded) {
      ...
   }
 
-=item id()
+=head2 id()
 
 Response id parameter.
 
   say $res->id;
 
-=item params()
+=head2 params()
 
 Response parameters in HASHREF.
 
   say $res->params->{id};
-
-=back
 
 =head1 AUTHOR
 
