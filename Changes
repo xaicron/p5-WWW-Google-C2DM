@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::Google::C2DM
 
+0.07  Fri Mar 16 02:42:36 2012
+    - oops! forgot add deps
+
 0.06  Fri Mar 16 02:25:17 2012
     - added WWW::Google::C2DM::Constants
     - fixed doc
