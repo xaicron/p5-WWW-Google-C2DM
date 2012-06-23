@@ -49,6 +49,27 @@ subtest 'required collapse_key' => sub {
     like $@, qr/Usage: .*collapse_key =>/;
 };
 
+subtest 'not allow collapse_key = q{}' => sub {
+    eval {
+        new_c2dnm->send(
+            registration_id => 'registration_id',
+            collapse_key    => '',
+        );
+    };
+    like $@, qr/Usage: .*collapse_key =>/;
+};
+
+subtest 'allow collapse_key = 0 (but data is invalid)' => sub {
+    eval {
+        new_c2dnm->send(
+            registration_id => 'registration_id',
+            collapse_key    => 0,
+            data            => 'foo',
+        );
+    };
+    like $@, qr/data parameter must be HASHREF/;
+};
+
 subtest 'data is invalid' => sub {
     eval {
         new_c2dnm->send(
